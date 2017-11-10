@@ -1,3 +1,5 @@
+import BST
+
 class Car:
     def __init__(self, license):
         self.license = license

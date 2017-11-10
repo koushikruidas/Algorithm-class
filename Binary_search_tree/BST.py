@@ -1,3 +1,5 @@
+import queue
+
 class Node:
     def __init__(self, value):
         self.value = value
@@ -46,6 +48,43 @@ def print_preorder(tree):
         print_preorder(current.right)
 
 
+def BFS(tree):
+    q = queue.Queue()
+    q.put(tree.root)
+    while q.empty() is not True:
+        n = q.get()
+        print(n.value)
+        if n.left is not None:
+            q.put(n.left)
+        if n.right is not None:
+            q.put(n.right)
+
+def DFS(tree):
+    s =[]
+    s.append(tree.root)
+    while len(s) > 0:
+        n = s.pop()
+        print(n.value)
+        if n.left is not None:
+            s.append(n.left)
+        if n.right is not None:
+            s.append(n.right)
+
+
+def DFS_rec(node):
+    if node is None:
+        print("no value :(")
+        return
+    else:
+        print(node.value)
+        if node.left is not None:
+            DFS_rec(node.left)
+        if node.right is not None:
+            DFS_rec(node.right)
+
+
+
+print(__name__)
 myBst = BST(4)
 # print(myBst.print())
 
@@ -54,7 +93,11 @@ arr = [5, 3, 6, 9, 7, 2, 1]
 for x in range(len(arr)):
     insert(myBst.root, arr[x])
 
-print_inorder_tree(myBst.root)
-print("---------")
-print_preorder(myBst.root)
-a = arr
+# print_inorder_tree(myBst.root)
+# print("---------")
+# print_preorder(myBst.root)
+# a = arr
+
+
+# BFS(myBst)
+DFS_rec(myBst.root)
